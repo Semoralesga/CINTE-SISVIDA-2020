@@ -1,0 +1,80 @@
+<h1 mat-dialog-title>{{ title }}</h1>
+
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <div fxLayout="row" class="push-bottom-sm">
+      <mat-form-field fxFlex>
+        <input
+          matInput
+          type="text"
+          placeholder="Nombre"
+          formControlName="name"
+          #nameInput
+          maxlength="40"
+          required
+        />
+        <span flex></span>
+        <mat-hint align="end"> {{ nameInput.value.length }} / 40 </mat-hint>
+        <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
+          <span *ngIf="name?.errors.required"> El nombre es requerido. </span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" class="push-bottom-sm">
+      <mat-form-field fxFlex>
+        <input
+          matInput
+          type="number"
+          placeholder="Victorias"
+          formControlName="victories"
+          maxlength="40"
+          required
+        />
+        <span flex></span>
+        <mat-error
+          *ngIf="victories.invalid && (victories.dirty || victories.touched)"
+        >
+          <span *ngIf="victories?.errors.required">
+            El numero de victorias es requerido.
+          </span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" class="push-bottom-sm">
+      <mat-form-field fxFlex>
+        <input
+          matInput
+          type="number"
+          placeholder="Numero de ciclistas"
+          formControlName="cyclist_number"
+          maxlength="40"
+          required
+        />
+        <span flex></span>
+        <mat-error
+          *ngIf="
+            cyclist_number.invalid &&
+            (cyclist_number.dirty || cyclist_number.touched)
+          "
+        >
+          <span *ngIf="cyclist_number?.errors.required">
+            El numero de ciclistas es requerido.
+          </span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<div fxLayout="row">
+  <div fxFlex="40" style="display: flex">
+    <button mat-button (click)="close()" fxFlex>CERRAR</button>
+  </div>
+  <span fxFlex="20"></span>
+  <div fxFlex="40" style="display: flex">
+    <button mat-raised-button [disabled]="form.invalid" (click)="save()" fxFlex>
+      <span *ngIf="!isEdit">CREAR</span>
+      <span *ngIf="isEdit">EDITAR</span>
+    </button>
+  </div>
+</div>

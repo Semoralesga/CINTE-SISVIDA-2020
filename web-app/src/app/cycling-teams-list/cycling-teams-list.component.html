@@ -1,0 +1,122 @@
+<div class="pad-table">
+  <div class="header">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div class="white-text text-center" fxFlex="16">
+        <h3 class="header-text">
+          Id
+          <mat-icon class="pointer" (click)="filterTeams('id')"
+            >arrow_drop_up</mat-icon
+          >
+        </h3>
+      </div>
+      <div class="white-text text-center" fxFlex="16">
+        <h3 class="header-text">
+          Nombre<mat-icon class="pointer" (click)="filterTeams('name')"
+            >arrow_drop_up</mat-icon
+          >
+        </h3>
+      </div>
+
+      <div class="white-text text-center price-header" fxFlex="16">
+        <h3 class="header-text">
+          Numero de ciclistas<mat-icon
+            class="pointer"
+            (click)="filterTeams('cyclist')"
+            >arrow_drop_up</mat-icon
+          >
+        </h3>
+      </div>
+      <div class="white-text text-center align-icon" fxFlex="16">
+        <div>
+          <h3 class="header-text">
+            Victorias<mat-icon class="pointer" (click)="filterTeams('vic')"
+              >arrow_drop_up</mat-icon
+            >
+          </h3>
+        </div>
+      </div>
+      <div class="white-text text-center align-icon" fxFlex="16">
+        <div>
+          <h3 class="header-text">
+            Fecha de creacion<mat-icon>arrow_drop_up</mat-icon>
+          </h3>
+        </div>
+      </div>
+      <div class="white-text text-center align-icon" fxFlex="16">
+        <div>
+          <h3 class="header-text">Opciones</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="teams.length > 0">
+    <mat-divider [inset]="false"> </mat-divider>
+    <div *ngFor="let team of teamsToShow; let i = index; let last = last">
+      <div
+        fxLayout="row"
+        class="pad-top-md pad-bottom-md"
+        fxLayoutAlign="center center"
+      >
+        <div class="pointer" (click)="goDetail(team)" fxFlex="84">
+          <div class="text-center text-break" fxFlex="20">
+            <p mat-line class="description-text">
+              {{ team.id }}
+            </p>
+          </div>
+          <div class="text-center text-break" fxFlex="20">
+            <p class="description-text">
+              {{ team.name }}
+            </p>
+          </div>
+          <div class="text-center text-break" fxFlex="20">
+            <p class="description-text">
+              {{ team.cyclist_number }}
+            </p>
+          </div>
+
+          <div class="text-center text-break" fxFlex="20">
+            <p class="description-text">
+              {{ team.victories }}
+            </p>
+          </div>
+          <div class="text-center text-break" fxFlex="20">
+            <p class="description-text">
+              {{ team.created_at | date: "dd/MM/yy" }}
+            </p>
+          </div>
+        </div>
+
+        <div class="text-center text-break" fxFlex="16">
+          <button mat-icon-button [mat-menu-trigger-for]="menu">
+            <span class="material-icons">more_vert</span>
+          </button>
+          <mat-menu x-position="before" #menu="matMenu">
+            <button mat-menu-item (click)="editTeam(team)">
+              <span class="material-icons">edit</span>
+              Editar
+            </button>
+            <button mat-menu-item (click)="removeTeam(team.id)">
+              <span class="material-icons">delete</span> Eliminar
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+      <mat-divider *ngIf="last"> </mat-divider>
+    </div>
+  </div>
+  <div *ngIf="teams.length >= pageSize || teams.length > 5">
+    <mat-paginator
+      [length]="teams.length"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+      [pageIndex]="pageIndex"
+      (page)="paginationEvent($event)"
+    >
+    </mat-paginator>
+  </div>
+</div>
+<button class="add-button" mat-raised-button (click)="addTeam()">
+  <mat-icon>add</mat-icon>
+  AGREGAR EQUIPO
+</button>

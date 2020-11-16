@@ -1,0 +1,31 @@
+.padre {
+  height: 100%;
+  /*IMPORTANTE*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hijo {
+  width: 50%;
+  height: 50%;
+  border: solid black;
+  text-align: center;
+}
+
+.margin-text {
+  height: 20px;
+  padding-top: 5%;
+  font-size: 50px;
+  word-break: break-all;
+}
+
+.main-text {
+  padding-top: 10%;
+  font-size: 100px;
+}
+
+.link-text {
+  padding-top: 10%;
+  font-size: 30px;
+}
