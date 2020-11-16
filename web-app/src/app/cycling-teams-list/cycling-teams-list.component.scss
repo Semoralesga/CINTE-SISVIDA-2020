@@ -1,0 +1,45 @@
+.header {
+  background-color: blue;
+}
+
+.header-text {
+  padding-top: 16px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.description-text {
+  padding-top: 16px;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.pad-table {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 5%;
+  border: solid 2px lightgray;
+  border-radius: 5px;
+}
+
+.add-button {
+  margin-left: 10%;
+  margin-top: 1%;
+}
+
+.sort-header {
+  display: inherit;
+}
+
+.sort-button {
+  padding: 13px;
+  padding-left: 10px;
+}
+
+.pointer {
+  cursor: pointer;
+}

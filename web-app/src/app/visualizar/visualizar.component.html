@@ -1,0 +1,42 @@
+<div class="pad-table" *ngIf="selectTeam">
+  <h3>Nombre: {{ selectTeam.name }}</h3>
+  <h3>Victorias: {{ selectTeam.victories }}</h3>
+  <h3>Numero de ciclistas: {{ selectTeam.cyclist_number }}</h3>
+  <h3>Fecha de creacion: {{ selectTeam.created_at | date: "dd/MM/yy" }}</h3>
+  <h3>
+    Fecha de actualizacion: {{ selectTeam.updated_at | date: "dd/MM/yy" }}
+  </h3>
+  <h3>Actualizado por: {{ selectTeam.last_updated_by }}</h3>
+  <div fxLayout="row">
+    <button
+      style="margin-right: 4%"
+      mat-raised-button
+      (click)="goBack()"
+      fxFlex
+    >
+      <mat-icon>arrow_back</mat-icon>
+      REGRESAR
+    </button>
+    <button
+      style="margin-left: 2%"
+      mat-raised-button
+      (click)="previousTeam()"
+      [disabled]="idTeam <= 1"
+      fxFlex
+    >
+      <mat-icon>keyboard_arrow_left</mat-icon>
+      ANTERIOR
+    </button>
+    <span fxFlex></span>
+    <button
+      style="margin-left: 4%"
+      mat-raised-button
+      (click)="nextTeam()"
+      [disabled]="idTeam - 1 === teams.length"
+      fxFlex
+    >
+      <mat-icon>keyboard_arrow_right</mat-icon>
+      SIGUIENTE
+    </button>
+  </div>
+</div>
